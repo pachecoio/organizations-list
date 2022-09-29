@@ -1,23 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import { OrganizationList } from "./OrganizationList";
+import { Organization } from "./Organization";
 
+const ORGS = {
+  org1: {
+    name: "org 1",
+    members: [
+      {
+        name: "member 1",
+      },
+    ],
+  },
+  org2: {
+    name: "org 2",
+    members: [
+      {
+        name: "member 1",
+      },
+    ],
+  },
+};
 function App() {
+  const [orgs, setOrgs] = useState(ORGS);
+
+  function saveOrg(org) {
+    const key = org.name.replace(" ", "");
+    setOrgs({ ...orgs, [key]: org });
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route
+          path="/"
+          element={<OrganizationList orgs={orgs} onAddOrg={saveOrg} />}
+        />
+        <Route
+          path="/:organizationName"
+          element={<Organization orgs={orgs} onMembersChange={saveOrg} />}
+        />
+      </Routes>
     </div>
   );
 }

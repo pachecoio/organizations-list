@@ -11,3 +11,73 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-container {
+  display: flex;
+}
+
+.add-container input {
+  flex: 1;
+  border: 1px solid grey;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.add-container button {
+  margin-left: 20px;
+  background-color: #005c80;
+  padding: 5px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  color: white;
+  border: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 20px 0;
+  padding: 0;
+}
+
+ul li.item {
+  display: flex;
+}
+
+li.item span:first-child, li.item a:first-child {
+  flex: 1;
+}
+
+ul li {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+ul li:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.members {
+  padding: 0 30px;
+}
+
+.delete, .back-button {
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header h1 {
+  flex: 1;
+}
